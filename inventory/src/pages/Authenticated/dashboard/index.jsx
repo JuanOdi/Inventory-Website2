@@ -11,6 +11,7 @@ const index = () => {
   return (
     <div className='dashboard'>
         <h2 className='ttl-01'>Search Items</h2>
+        <p>test</p>
         <form className='search-form' onChange={handleSubmit}>
             <input type='text' className='search-form__input' placeholder='Search items...' ref={inputRef}  />
         </form>
