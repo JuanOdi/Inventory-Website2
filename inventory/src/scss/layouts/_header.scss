@@ -4,14 +4,14 @@
 @use "../modules" as m;
 
 .header {
-  @include m.flex($gap: 50px, $ai: flex-start, $jc: space-between,$fd:column);
+  @include m.flex($gap: 30px, $ai: flex-start, $jc: flex-start,$fd:column);
   position: fixed;
   top: 0;
   left: 0;
-  width: 300px;
+  width: 25%;
   height: 100%;
   padding: 40px;
-  background: m.$gray;
+  background: m.$white02;
   z-index: 100;
   user-select: none;
   @include m.transition(box-shadow);
@@ -24,11 +24,12 @@
     top: 32px;
   }
 
-  // background: url("../../assets/header-logo.png");
   .is-scrolled & {
     box-shadow: 0 0 10px -5px m.$black;
   }
-
+  &__home{
+    @include m.flex($gap: 30px, $ai: center, $jc: flex-start);
+  }
   &__logo {
     max-height: 70px;
     pointer-events: none;
@@ -36,9 +37,11 @@
       max-height: 50px;
     }
   }
-
+  &__link{
+    font-size: 2rem;
+  }
   &__nav {
-    flex: 1;
+    // flex: 1;
     @include m.flex($gap: 50px, $ai: center, $jc: flex-start,$fd:column);
     @include m.mqMax {
       position: absolute;
@@ -70,12 +73,20 @@
 .menu {
   @include m.flex($gap: 30px, $ai: flex-start, $jc: flex-end,$fd:column);
   &__ttl{
-    @include m.transition(color,transform);
+    @include m.transition(color);
+    font-size: 1.8rem;
+    color:#7b7b7b;
+    &.is-active,
     &:hover{
-      color: m.$white;
+      color: m.$black;
     }
   }
-  
+  &__link{
+    @include m.flex($ai:center, $jc:flex-start, $gap:10px);
+  }
+  &__img{
+    max-width: 20px;
+  }
 }
 
 /* Menu Bar */

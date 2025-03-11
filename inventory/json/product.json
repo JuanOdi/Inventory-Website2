@@ -1,0 +1,27 @@
+
+{
+    "Products" : [
+        {
+            "id": 1,
+            "img": "img/dashboard/img01.jpeg",
+            "name": "Product Name",
+            "txt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "price": "$100"
+
+        },
+        {
+            "id": 2,
+            "img": "img/dashboard/img02.jpg",
+            "name": "Product Name",
+            "txt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "price": "$150"
+        },
+        {
+            "id": 3,
+            "img": "img/dashboard/img03.jpeg",
+            "name": "Product Name",
+            "txt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "price": "$200"
+        }
+    ]
+}
