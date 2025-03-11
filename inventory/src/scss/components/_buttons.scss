@@ -21,3 +21,24 @@
     }
 
 }
+
+.btn-01{
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+    &__link{
+        background: m.$white;
+        color: m.$black;
+        font-size: 1.8rem;
+        font-weight: 700;
+        border-radius: 30px;
+        padding: 10px;
+        border: 1px solid m.$black;
+        @include m.flex($jc:center);
+        &--black{
+            background: m.$black;
+            color: m.$white;
+        }
+    }
+
+}

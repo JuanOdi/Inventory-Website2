@@ -1,0 +1,168 @@
+@use "../modules" as m;
+
+.sign-up{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(51,51,51,.8);
+  z-index: 102;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+ 
+  &__info{
+    position: absolute;
+    top:50%;
+    left: 60%;
+    transform: translate(-50%, -60%);
+    width: 100%;
+    max-width: 480px;
+    padding: 50px;
+    background-color: m.$white;
+    border-radius: 10px;
+  }
+  &.active {
+    opacity: 1;
+    visibility: visible;
+
+    .sign-up__info {
+      opacity: 1;
+      transform: translate(-50%, -60%) scale(1);
+    }
+  }
+  &__ttl{
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+  }
+  &__form{
+    @include m.flex($fd: column);
+    label{
+      margin-top: 20px;
+      font-size: 1.8rem;
+      opacity: .5;
+      letter-spacing: .08em;
+      padding-bottom: 10px;
+    }
+    input{
+      width: 100%;
+      height: 40px;
+    }
+    button{
+      margin-top: 20px;
+      width: 100%;
+      max-width: 350px;
+      margin-inline: auto;
+      padding: 15px;
+      border-radius: 20px;
+      border: none; 
+      outline: none;
+      color:m.$white;
+      cursor: pointer;
+      font-size: 2rem;
+      background-color: m.$green;
+    }
+  }
+  &__close{
+    font-size: 3rem;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: .5;
+  }
+  &__txt{
+    font-size: 2rem;
+    text-align: center;
+    opacity: .5;
+    margin-top: 20px;
+    position: relative;
+    &:before,&::after{
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%);
+      width: 150px;
+      height: 2px;
+      background-color: m.$black;
+      opacity: .5;
+    }
+    &::before{
+      left: 70px;
+    }
+    &::after{
+      right: -70px;
+    }
+  }
+  &__link{
+    margin-top: 20px;
+    @include m.flex($gap:20px,$jc:center, $ai:center);
+    border:1px solid rgba(m.$black, .3);
+    padding:15px;
+    border-radius: 30px;
+  }
+  &__img{
+    width: 100%;
+    max-width: 25px;
+  }
+}
+
+.modal{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(51,51,51,.8);
+  z-index: 102;
+
+  &__info{
+    position: absolute;
+    top:50%;
+    left: 60%;
+    transform: translate(-50%, -60%);
+    width: 100%;
+    max-width: 480px;
+    padding: 50px;
+    background-color: m.$white;
+    border-radius: 10px;
+  }
+  
+  &__img{
+    aspect-ratio: 250/200;
+    width: 100%;
+    border-radius: 10px;
+  }
+  &__close{
+    font-size: 3rem;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: .5;
+  }
+  &__ttl{
+    font-size: 3rem;
+    margin-top: 10px;
+  }
+  &__txt{
+    font-size: 2rem;
+    margin-top: 10px;
+  }
+  &__cart{
+    span{
+      font-size: 2rem;
+      margin-inline: 10px;
+    }
+    button{
+      cursor: pointer;
+      width: 100%;
+      max-width: 50px;
+      font-size: 4rem;
+      border: none;
+
+    }
+  }
+}

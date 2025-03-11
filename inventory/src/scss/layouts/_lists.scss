@@ -2,3 +2,39 @@
  Lists
 **********************************/
 @use "../modules" as m;
+
+.list-card{
+  padding: 50px;
+  @include m.flex($gap: 20px, $ai: center, $jc: center,$fw:wrap);
+  &__img{
+    aspect-ratio: 250/250;
+    width: 100%;
+    max-width: 250px;
+    border-radius: 20px;
+    .img__main{
+      @include m.transition(transform);
+    }
+  }
+  &__item{
+    background-color: m.$white02;
+    max-width: 300px;
+    padding: 20px;
+    border-radius: 20px;
+    // @include m.transition(transform);
+    // &:hover{
+    //     transform: scale(1.1);
+    // }
+  }
+  &__link{
+    @include m.flex($ai:flex-start,$fd:column, $jc:center);
+    &:hover{
+      .img__main{
+        transform: scale(1.2);
+      }
+    }
+  }
+  &__ttl{
+    font-size: 2rem;
+    margin-top: 20px;
+  }
+}
