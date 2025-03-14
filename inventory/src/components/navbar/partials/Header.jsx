@@ -32,7 +32,7 @@ const Header = () => {
         <nav class="header__nav">
             <ul class="header__menu menu">
                 <li class="menu__item menu__item--01">
-                    <a class="menu__link" href="#">
+                    <a class="menu__link" href="/">
                         <img className="menu__img" src={img01} alt="" />
                         <span class="menu__ttl is-active">Home</span>
                     </a>
@@ -44,7 +44,7 @@ const Header = () => {
                     </a>
                 </li>
                 <li class="menu__item menu__item--03">
-                    <a class="menu__link" href="#">
+                    <a class="menu__link" href="/favorites">
                         <img className="menu__img" src={img03} alt="" />
                         <span class="menu__ttl">Favorites</span>
                     </a>
