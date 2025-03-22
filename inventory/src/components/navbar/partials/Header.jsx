@@ -4,14 +4,14 @@ import logo from '../../../assets/common/logo.png';
 import img01 from '../../../assets/common/search.png';
 import img02 from '../../../assets/common/history.png';
 import img03 from '../../../assets/common/favorite.png';
-
-
 import SignUp from '../../modal/signUp';
 import SignIn from '../../modal/signIn';
+import AddItem from '../../modal/addItem';
 
 const Header = () => {
     const [isSignUpOpen, setSignUpOpen] = useState(false);
     const [isSignInOpen, setSignInOpen] = useState(false);
+    const [addItemOpen, setAddItemOpen] = useState(false);
 
     
   return (
@@ -25,7 +25,7 @@ const Header = () => {
             <p className="header__link">Inventory</p>
         </a>
         <div className='btn'>
-            <a className ="btn__link" href='#'>
+            <a className ="btn__link" href='#'  onClick={() => setAddItemOpen(true)}>
                 Add Item Entry
             </a>
         </div>
@@ -63,6 +63,7 @@ const Header = () => {
         </div>
             <SignUp isOpen={isSignUpOpen} onClose={() => setSignUpOpen(false)}/>
             <SignIn isOpen={isSignInOpen} onClose={() => setSignInOpen(false)}/>
+            <AddItem isOpen={addItemOpen} onClose={() => setAddItemOpen(false)}/>
         </header> 
     </>
   )

@@ -1,0 +1,63 @@
+@use "../modules" as m;
+
+.addItem{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(51,51,51,.8);
+    z-index: 102;
+    &__info{
+        position: absolute;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 50px;
+        width: 100%;
+        max-width: 1200px;
+        background-color: m.$white;
+        border-radius: 10px;
+    }
+    &__img{
+        max-width: 60px;
+        cursor: pointer;
+    }
+    &__input{
+        height: 35px;
+        width: 320px;
+        border: none;
+        border-bottom: 1px solid m.$black;
+    }
+    &__item{
+        width: 100%;
+        @include m.flex($fd:column,$ai:center,$jc:flex-end, $gap:50px);
+    }
+    &__wrap{
+        margin-top: 20px;
+        @include m.flex($gap: 20px, $ai:flex-end,$jc:center);
+    }
+    &__btn{
+        &-wrap{
+            margin-top: 50px;
+            @include m.flex($jc:flex-end,$gap:20px);
+        }
+        &-add,&-save{
+            max-width: 150px;
+            padding: 10px;
+            width: 100%;
+            border:none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: m.$white;
+            font-size: 2rem;
+            font-weight: 400;
+        }
+        &-add{
+            background-color: m.$red;
+        }
+        &-save{
+            background-color: m.$green;
+        }
+    }
+}
