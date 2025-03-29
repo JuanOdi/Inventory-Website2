@@ -4,19 +4,65 @@ import fav from "../../../assets/common/pin.png";
 import fav2 from "../../../assets/common/pin-filled.png";
 
 const dashboard = () => {
+  const capitalizeWords = (text) => text.replace(/\b\w/g, (char) => char.toUpperCase());
+  const toLowerCaseText = (text) => text.toLowerCase();
   const inputRef = useRef("");
   const [products, setProducts] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(null);
+  const [debouncedQuery, setDebouncedQuery] = useState("");
   const [favorites, setFavorites] = useState(() => {
     return JSON.parse(localStorage.getItem("favorites")) || {}; 
   });
 
   useEffect(() => {
-    fetch("/json/product.json")
-      .then((response) => response.json())
-      .then((data) => setProducts(data.Products))
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+    const handler = setTimeout(() => {
+      setDebouncedQuery(searchQuery);
+    }, 500);
+  
+    return () =>{
+      clearTimeout(handler);
+    }
+  },[searchQuery]);
+  
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const url =
+          debouncedQuery === "" || searchQuery == null
+          ? "http://localhost:8080/getItemDetails"
+          : `http://localhost:8080/searchItems`;
+  
+          const response = await fetch(url, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "query": `${toLowerCaseText(debouncedQuery)}`,
+            },
+          });
+  
+          if (!response.ok){
+            throw new Error("Failed to fetch data");
+          }
+  
+          const data = await response.json();
+  
+          if (Array.isArray(data)){
+            setProducts(data);
+          } else {
+            setProducts([]);
+          }
+          
+      } catch (error) {
+          console.log("Error Fetching Data: ", error);
+          setProducts([]); 
+      }
+    };
+  
+    if(debouncedQuery !== null) {
+      fetchProducts();
+    }
+  }, [debouncedQuery]);
 
   const handleOpenModal = (cardData) => {
     setSelectedCard(cardData);
@@ -26,9 +72,9 @@ const dashboard = () => {
     setSelectedCard(null);
   };
 
-  const handleSubmit = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    console.log("Search Value:", inputRef.current.value);
+    setSearchQuery(inputRef.current.value);
   };
 
   const handleFavorite = (product) => {
@@ -49,7 +95,7 @@ const dashboard = () => {
   return (
     <div className='top-dashboard'>
       <h2 className='ttl-01'>Search Items</h2>
-      <form className='search-form' onChange={handleSubmit}>
+      <form className='search-form' onChange={handleSearch}>
         <input type='text' className='search-form__input' placeholder='Search items...' ref={inputRef} />
       </form>
       <ul className="list-card">
@@ -69,7 +115,7 @@ const dashboard = () => {
                 <img className='img__main' src={product.img} alt="" />
               </div>
               <div className="list-card__info">
-                <h3 className="list-card__ttl">{product.name}</h3>
+                <h3 className="list-card__ttl">{capitalizeWords(product.name)}</h3>
                 <p className="list-card__txt">{product.txt}</p>
               </div>
             </a>
