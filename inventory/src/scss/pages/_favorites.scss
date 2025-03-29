@@ -1,0 +1,27 @@
+@use "../modules" as m;
+
+.favorites{
+    padding: 20px;
+    &__info{
+        @include m.flex($ai:center,$jc:center,$gap:80px);
+        margin-top: 50px;
+        padding-left: 80px;
+    }
+    &__img{
+        aspect-ratio: 200/180;
+        width: 100%;
+        max-width: 200px;
+        border-radius: 20px;
+    }
+    &__txt,&__ttl{
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+    }
+    &__txt{
+        margin-left: 90px;
+    }
+    &__delete{
+        max-width: 20px;
+    }
+}

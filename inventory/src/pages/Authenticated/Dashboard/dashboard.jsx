@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import CardModal from '../../../components/modal/cardModal';
-import fav from "../../../assets/common/favorite.png";
-import fav2 from "../../../assets/common/heart-filled.png";
+import fav from "../../../assets/common/pin.png";
+import fav2 from "../../../assets/common/pin-filled.png";
 
 const dashboard = () => {
   const inputRef = useRef("");
